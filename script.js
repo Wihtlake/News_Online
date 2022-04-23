@@ -11,7 +11,7 @@ async function getNews(){
 
     let i = 0;
       
-    for (i = 1; i < newsBox.length; i++) {
+    for (i = 1; i < 9; i++) {
       console.log(i);
         const author = newsBox[i].author;
         const content = newsBox[i].content;
