@@ -12,7 +12,8 @@
   let categ = 0;
 
 async function getNews(categ){
-    // записываем не изменяемый ключ api
+  async function connect(){
+        // записываем не изменяемый ключ api
     const api = '&apiKey=73c77832728541b2a180f10351b465ce';
     // Записываем адрес
     const addres = 'https://newsapi.org/v2/top-headlines'
@@ -21,7 +22,7 @@ async function getNews(categ){
     // обьявляем категорию
     let list_cat = '&category='
     // обьявляем значение категории 
-    console.log(`getNews даные об аргументах  ${categ}  и номер ${indexmass}`)
+    console.log(`getNews даные об аргументах  ${categ}  и номер ${indexmass}`);
     // создаем массив для категорий
     
 
@@ -29,8 +30,10 @@ async function getNews(categ){
     const response = await fetch(url);
     const data = await response.json();
     const newsBox = data.articles;
+    startNews(newsBox);
+  }
 
-function startNews(){
+function startNews(newsBox){
   let i = 0;
   for (i = 1; i < newsBox.length; i++) {
     const author = newsBox[i].author;
@@ -70,9 +73,52 @@ function startNews(){
     descriptionBox.classList.add('description');
     descriptionBox.innerText = description;
   }
+} 
+function detele22(){
+  let i = 0;
+  console.log(document.querySelectorAll('.news_box').length);
+
+  for (i = 0; i < document.querySelectorAll('.news_box').length; i++) {
+    console.log(i);
+    document.querySelector('.news_box').remove();
+    detele22();
+    // ещё выражения
 }
-    startNews();
 }
+
+// example1.js
+function go(){
+  setTimeout(
+    () => {
+        console.log('удаляем старые компоненты... ');
+        detele22();
+        check();
+      },
+      1
+    );
+}
+
+function check(){
+  setTimeout(
+() => {
+    
+    if(document.querySelector('.news_box')){
+      console.log('newsBox найден!');
+      go();
+    }else{
+      console.log('newsBox не найден!');
+
+      console.log('добавляем новые компоненты... ');
+      connect();
+    }
+    
+  },
+  1
+);
+}
+check();
+}
+
 
 function delete1(categ, indexmass){
   console.log(`delete1 даные об аргументах  ${categ} + ${indexmass}`)
@@ -90,11 +136,10 @@ function elem1(categ, indexmass){
 
 
 btn.onclick = function(categ, newTask){
-  setTimeout((newTask) => {this.closest('div').remove();}, 120);
   categ = mass[catBox.value]
   indexmass = catBox.value;
   console.log(` нажали на кнопку и присвоили значение categ: ${categ}`);
   console.log(` нажали на кнопку и нашли значение массива indexmass: ${indexmass}`);
   console.log(`передели два значения в elem1 ${categ} ${indexmass}`)
-  elem1(categ, indexmass );
+  elem1(categ, indexmass);
 }
