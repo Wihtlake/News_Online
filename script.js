@@ -22,6 +22,7 @@ function getNews(categ){
     let list_cat = '&category='
 
     let url = `${addres}${country}${list_cat}${categ}${api}`;
+    url = 'https://newsdata.io/api/1/news?apikey=pub_6745fad84cfdc182c665db8fef6ae0446494&q=pegasus&language=en';
     let req = new Request(url);
 
     const response = await fetch(req);
@@ -34,16 +35,13 @@ function getNews(categ){
     console.log(newsBo)
     
     let i = 0;
-    let newsBox = newsBo.articles;
+    let newsBox = newsBo.results;
     for (i = 0; i < 1; i++) {
-      const author = newsBox[i].author;
-      const content = newsBox[i].content;
       const description = newsBox[i].description;
       const title = newsBox[i].title;
-      const urlpage = newsBox[i].url;
-      const urlToImage = newsBox[i].urlToImage;
-      const publishedAt = newsBox[i].publishedAt;
-      console.log(urlToImage)
+      const urlpage = newsBox[i].link;
+      const urlToImage = newsBox[i].image_url;
+      console.log(newsBox)
       console.log('создаем элементы на страницу')
 
       const newTask = document.createElement('div');
