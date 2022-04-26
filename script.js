@@ -32,11 +32,11 @@ function getNews(categ){
     console.log(response)
     console.log(data)
     console.log(newsBox)
-    startNews(newsBox.articles);
+    startNews(newsBox);
   }
 function startNews(newsBox){
     let i = 0;
-    for (i = 1; i < newsBox.length; i++) {
+    for (i = 0; i < 1; i++) {
       const author = newsBox[i].author;
       const content = newsBox[i].content;
       const description = newsBox[i].description;
