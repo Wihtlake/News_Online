@@ -10,7 +10,7 @@
   const btn = document.querySelector('.btn')
 
   let categ = 0;
-
+  
 function getNews(categ){
   async function connect(){
     let url = 'https://newsapi.org/v2/everything?' +
@@ -28,9 +28,8 @@ function getNews(categ){
     console.log(response)
     console.log(data)
     console.log(newsBox)
-    startNews(newsBox)
   }
-
+connect();
 function startNews(newsBox){
     let i = 0;
     for (i = 1; i < newsBox.length; i++) {
@@ -69,6 +68,7 @@ function startNews(newsBox){
       urlBox.innerText = description;
       newTask.append(urlBox);
     }
+    connect();
 } 
 function detele22(){
   let i = 0;
@@ -113,7 +113,10 @@ btn.onclick = function(categ, newTask){
   indexmass = catBox.value;
   if(indexmass == 0){
     alert('Выберите категорию');
+    
   }else{
+    getNews();
     elem1(categ, indexmass);
   }
 }
+getNews();
