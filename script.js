@@ -11,25 +11,24 @@
 
   let categ = 0;
 
-async function getNews(categ){
+function getNews(categ){
   async function connect(){
-        // записываем не изменяемый ключ api
-    const api = '&apiKey=73c77832728541b2a180f10351b465ce';
-    // Записываем адрес
-    const addres = 'https://newsapi.org/v2/top-headlines'
-    // обьявляем страну (язык)
-    const country = '?country=ru'
-    // обьявляем категорию
-    let list_cat = '&category='
-    // обьявляем значение категории 
-    console.log(`getNews даные об аргументах  ${categ}  и номер ${indexmass}`);
-    // создаем массив для категорий
-    
-    let url = `${addres}${country}${list_cat}${categ}${api}`;
-    const response = await fetch(url);
+    let url = 'https://newsapi.org/v2/everything?' +
+    'q=Apple&' +
+    'from=2022-04-26&' +
+    'sortBy=popularity&' +
+    'apiKey=73c77832728541b2a180f10351b465ce';
+    let req = new Request(url);
+
+    const response = await fetch(req);
     const data = await response.json();
     const newsBox = data.articles;
-    startNews(newsBox);
+
+    console.log(url)
+    console.log(response)
+    console.log(data)
+    console.log(newsBox)
+    startNews(newsBox)
   }
 
 function startNews(newsBox){
