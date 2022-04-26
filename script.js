@@ -13,11 +13,15 @@
   
 function getNews(categ){
   async function connect(){
-    let url = 'https://newsapi.org/v2/everything?' +
-    'q=Apple&' +
-    'from=2022-04-26&' +
-    'sortBy=popularity&' +
-    'apiKey=73c77832728541b2a180f10351b465ce';
+    const api = '&apiKey=73c77832728541b2a180f10351b465ce';
+    // Записываем адрес
+    const addres = 'https://newsapi.org/v2/top-headlines'
+    // обьявляем страну (язык)
+    const country = '?country=ru'
+    // обьявляем категорию
+    let list_cat = '&category='
+
+    let url = `${addres}${country}${list_cat}${categ}${api}`;
     let req = new Request(url);
 
     const response = await fetch(req);
@@ -28,6 +32,7 @@ function getNews(categ){
     console.log(response)
     console.log(data)
     console.log(newsBox)
+    startNews(newsBox.articles);
   }
 function startNews(newsBox){
     let i = 0;
@@ -67,8 +72,7 @@ function startNews(newsBox){
       urlBox.innerText = description;
       newTask.append(urlBox);
     }
-    connect();
-} 
+ } 
 function detele22(){
   let i = 0;
   for (i = 0; i < document.querySelectorAll('.news_box').length; i++) {
@@ -114,7 +118,6 @@ btn.onclick = function(categ, newTask){
     alert('Выберите категорию');
     
   }else{
-    getNews();
     elem1(categ, indexmass);
   }
 }
