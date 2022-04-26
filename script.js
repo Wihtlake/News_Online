@@ -28,21 +28,17 @@ function getNews(categ){
     const response = await fetch(req);
     const data = await response.json();
     const newsBo = data;
-
-    console.log(url)
-    console.log(response)
-    console.log(data)
-    console.log(newsBo)
-    
-    let i = 0;
     let newsBox = newsBo.results;
+ if(newsBox.length == 0){
+          alert('нвоостей нет');
+      }else{
+    let i = 0;
+    
     for (i = 0; i < newsBox.length; i++) {
       const description = newsBox[i].description;
       const title = newsBox[i].title;
       const urlpage = newsBox[i].link;
       const urlToImage = newsBox[i].image_url;
-      console.log(newsBox)
-      console.log('создаем элементы на страницу')
 
       const newTask = document.createElement('div');
       newTask.classList.add('news_box');
@@ -68,6 +64,7 @@ function getNews(categ){
       urlBox.classList.add('urlBox');
       urlBox.innerText = description;
       newTask.append(urlBox);
+      }
     }
   }
 function detele22(){
@@ -106,7 +103,7 @@ function elem1(categ, indexmass){
   getNews(categ);
 }
 
-const mass = [ '' ,'business', 'entertainment', 'environment', 'food', 'health', 'politics'];
+const mass = [ '' ,'business', 'entertainment', 'environment', 'food', 'health', 'politics', 'science', 'sports', 'technology', 'top', 'world'];
 
 btn.onclick = function(categ, newTask){
   categ = mass[catBox.value]
