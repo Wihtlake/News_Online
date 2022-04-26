@@ -140,7 +140,7 @@ body{
         flex-wrap: wrap;
     }
     .categiries_box{
-        width: 80%;
+        width: 90%;
         height: 70px;
         border-radius: 10px;
         font-size: 25pt;
@@ -167,7 +167,7 @@ body{
         margin: 30px auto;
         font-size: 25pt;
         height: 60px;
-        width: 80%;
+        width: 90%;
         padding: 5px  20px;
         border-radius: 10pt;
         background: rgba(255, 255, 255, 0);
