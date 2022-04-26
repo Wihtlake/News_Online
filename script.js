@@ -26,16 +26,15 @@ function getNews(categ){
 
     const response = await fetch(req);
     const data = await response.json();
-    const newsBox = data;
+    const newsBo = data;
 
     console.log(url)
     console.log(response)
     console.log(data)
-    console.log(newsBox)
-    startNews(newsBox);
-  }
-function startNews(newsBox){
+    console.log(newsBo)
+    
     let i = 0;
+    let newsBox = newsBo.articles;
     for (i = 0; i < 1; i++) {
       const author = newsBox[i].author;
       const content = newsBox[i].content;
@@ -72,7 +71,7 @@ function startNews(newsBox){
       urlBox.innerText = description;
       newTask.append(urlBox);
     }
- } 
+  }
 function detele22(){
   let i = 0;
   for (i = 0; i < document.querySelectorAll('.news_box').length; i++) {
@@ -121,4 +120,3 @@ btn.onclick = function(categ, newTask){
     elem1(categ, indexmass);
   }
 }
-getNews();
