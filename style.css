@@ -132,6 +132,13 @@ body{
 }
 
 @media only screen and (max-width: 560px) {
+    .box_news{
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+    }
     .categiries_box{
         width: 80%;
         height: 70px;
@@ -168,12 +175,11 @@ body{
         transition: background .3s, color .2s, cursor .2s;
     }
     .news_box{
-        padding: 5px;
+        padding: 3px 3px;
         display: flex;
         flex-direction: column;
         margin: 20px auto;
-        min-width: 300px;
-        max-width: 700px;
+        width: 90%;
         border-radius: 20px;
 
 
@@ -184,13 +190,14 @@ body{
     }
     .title{
         font-size: 20pt;
-        padding-left: 10px;
+        margin: 20px auto;
+        padding-left: 15px;
         font-weight: 900;
         margin-bottom: 5px;
     }
     .urlBox{
         margin-bottom: 20px;
-        padding: 0 20px;
+        padding: 0 25px;
         text-decoration: none;
         font-size: 15pt;
         color: #fff;
