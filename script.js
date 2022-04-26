@@ -22,14 +22,13 @@ function getNews(categ){
 
     const response = await fetch(req);
     const data = await response.json();
-    const newsBox = data.articles;
+    const newsBox = data;
 
     console.log(url)
     console.log(response)
     console.log(data)
     console.log(newsBox)
   }
-connect();
 function startNews(newsBox){
     let i = 0;
     for (i = 1; i < newsBox.length; i++) {
