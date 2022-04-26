@@ -13,16 +13,16 @@
   
 function getNews(categ){
   async function connect(){
-    const api = '&apiKey=73c77832728541b2a180f10351b465ce';
+    const api = '?apikey=pub_6745fad84cfdc182c665db8fef6ae0446494';
     // Записываем адрес
-    const addres = 'https://newsapi.org/v2/top-headlines'
+    const addres = 'https://newsdata.io/api/1/news'
     // обьявляем страну (язык)
-    const country = '?country=ru'
+    const country = '&country=ru'
     // обьявляем категорию
     let list_cat = '&category='
 
-    let url = `${addres}${country}${list_cat}${categ}${api}`;
-    url = 'https://newsdata.io/api/1/news?apikey=pub_6745fad84cfdc182c665db8fef6ae0446494&q=pegasus&language=en';
+    let url = `${addres}${api}${country}${list_cat}${categ}`;
+    // url = 'https://newsdata.io/api/1/news?apikey=pub_6745fad84cfdc182c665db8fef6ae0446494&q=pegasus&language=ru';
     let req = new Request(url);
 
     const response = await fetch(req);
@@ -36,7 +36,7 @@ function getNews(categ){
     
     let i = 0;
     let newsBox = newsBo.results;
-    for (i = 0; i < 1; i++) {
+    for (i = 0; i < newsBox.length; i++) {
       const description = newsBox[i].description;
       const title = newsBox[i].title;
       const urlpage = newsBox[i].link;
@@ -106,7 +106,7 @@ function elem1(categ, indexmass){
   getNews(categ);
 }
 
-const mass = [ '' ,'business', 'entertainment', 'general', 'science', 'sports', 'technology'];
+const mass = [ '' ,'business', 'entertainment', 'environment', 'food', 'health', 'politics'];
 
 btn.onclick = function(categ, newTask){
   categ = mass[catBox.value]
